@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TerraVision – AgriCarbonX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0c0f;
+      --glass-bg:rgba(255,255,255,.05);
+      --glass-border:rgba(255,255,255,.12);
+      --accent:#00e5ff;
+      --text:#e6e6e6;
+      --text-muted:#8a8f98;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    /* HERO PARALLAX */
+    .hero{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+    .hero-content{
+      position:relative;
+      z-index:1;
+      text-align:center;
+      padding:0 1.5rem;
+      max-width:850px;
+    }
+    .hero h1{
+      font-size:clamp(2.5rem,8vw,5rem);
+      font-weight:700;
+      letter-spacing:.04em;
+      color:var(--accent);
+      text-shadow:0 0 20px rgba(0,229,255,.6);
+    }
+    .hero p{
+      margin-top:.5rem;
+      font-size:1.25rem;
+      color:var(--text-muted);
+    }
+    /* SCROLL LAYERS */
+    section{
+      margin:4rem auto;
+      max-width:1000px;
+      padding:0 1.5rem;
+    }
+    .card{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      border-radius:18px;
+      padding:2.5rem;
+      backdrop-filter:blur(12px);
+      box-shadow:0 8px 32px rgba(0,0,0,.35);
+      transition:transform .3s;
+    }
+    .card:hover{transform:translateY(-4px)}
+    h2{
+      font-size:1.6rem;
+      font-weight:600;
+      color:var(--accent);
+      margin-bottom:1rem;
+    }
+    p,ul{margin-bottom:.9rem;color:var(--text-muted)}
+    ul{padding-left:1.2rem}
+    /* IMAGE */
+    .figure{
+      margin:3rem 0;
+      text-align:center;
+    }
+    .figure img{
+      width:100%;
+      max-width:900px;
+      border-radius:14px;
+      box-shadow:0 0 30px rgba(0,229,255,.25);
+      transition:transform .4s;
+    }
+    .figure img:hover{transform:scale(1.02)}
+    .figure figcaption{
+      margin-top:.8rem;
+      font-size:.95rem;
+      color:var(--text-muted);
+      max-width:750px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    /* ANIMATED STATS */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:1.5rem;
+      text-align:center;
+      margin:3rem 0;
+    }
+    .stat{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      border-radius:12px;
+      padding:1.5rem .5rem;
+      backdrop-filter:blur(8px);
+    }
+    .stat .num{
+      font-size:2.2rem;
+      font-weight:700;
+      color:var(--accent);
+    }
+    .stat .label{font-size:.85rem;color:var(--text-muted)}
+    /* RESPONSIVE */
+    @media(max-width:600px){
+      .hero h1{font-size:2.3rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- PARALLAX HERO + PARTICLES -->
+<section class="hero">
+  <canvas id="globe"></canvas>
+  <div class="hero-content">
+    <h1>TerraVision</h1>
+    <p>Turning every acre into a live soil story</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+  <section>
+    <div class="card">
+      <h2>Concept Overview</h2>
+      <p>TerraVision is a cutting‑edge platform under AgriCarbonX that transforms soil into a transparent, verifiable carbon asset. By combining high‑resolution satellite data, machine learning, and ground‑truth soil science, TerraVision automates soil organic carbon (SOC) profiling over large areas. Instead of slow, laborious soil sampling, it delivers “live” maps of soil carbon, moisture, and fertility—empowering farmers, scientists, and carbon project developers with rapid insights and reporting. The platform’s goal is to revolutionize soil health management and carbon markets—enabling land stewards to easily monitor soil carbon gains, optimize inputs (fertilizer, water, etc.), and earn carbon credits. In effect, TerraVision aims to turn every farm into a carbon sink by unlocking carbon project revenues for growers while restoring soil fertility and resilience.</p>
+    </div>
+  </section>
+
+  <figure class="figure">
+    <img src="soil-signal-deep-planet-prediction-platform.jpg" alt="High-resolution SOC map">
+    <figcaption>
+      Example of a high‑resolution soil organic carbon map (g/kg) derived from satellite and AI analysis (illustrative). Traditional lab‑based soil tests are costly, infrequent, and spatially sparse; remote sensing closes these gaps. TerraVision’s algorithms analyze multispectral satellite imagery combined with historical soil and climate data to predict soil metrics continuously. Platforms like DeepPlanet already demonstrate this approach, using AI on multi‑spectral images plus large soil databases to give farmers predictive nutrient and SOC maps at field scale. Similarly, TerraVision provides dynamic SOC baselining and annual tracking. Such continuous mapping enables carbon insetting and credit issuance by quantifying how much carbon has been sequestered in soils year over year. In short, TerraVision makes “every acre tell a live soil story,” replacing blind‑spot measurements with transparent geospatial intelligence.
+    </figcaption>
+  </figure>
+
+  <section>
+    <div class="card">
+      <h2>Key Challenges & Why TerraVision Matters</h2>
+      <h3>Scaling Carbon Markets</h3>
+      <p>Soil carbon is a vast untapped sink for CO₂ removal. Improved land management could sequester roughly 10&nbsp;percent of humanity’s annual emissions. Yet conventional SOC measurement has lagged: sampling campaigns can take years and cost tens of dollars per acre. This cost‑accuracy trade‑off has hampered carbon credit projects—especially for smallholder farmers. TerraVision breaks this frontier by combining free satellite imagery (Sentinel‑2, PlanetScope, radar data) with AI to estimate SOC remotely. By slashing time and cost to a fraction of traditional methods, it makes high‑integrity soil carbon credits feasible for any farm.</p>
+
+      <h3>Precision Agriculture</h3>
+      <p>Soils can vary dramatically even within a single field. Traditional sampling often misses fertility hotspots or degradation zones. Remote sensing reveals this “hidden variability” at meter scales, enabling site‑specific management. TerraVision’s high‑resolution maps let agronomists and farmers target amendments precisely. Across millions of acres, this means optimized fertilizer use, higher yields, less runoff—and more carbon stored in healthier soils.</p>
+
+      <h3>MRV & Transparency</h3>
+      <p>Trust in carbon markets demands robust Monitoring‑Reporting‑Verification. Leading initiatives advocate unified MRV—combining field data, weather, and satellite imagery via online dashboards. TerraVision embodies this vision: it fuses remote and in‑situ data into an intuitive portal where farmers and project developers get audit‑ready carbon reports. The system automatically generates documentation—maps, statistics, and time‑series analyses—that feed directly into registries. In effect, it flips the old carbon‑market equation, placing rigorous scientific measurement at low cost. By doing so, TerraVision “unlocks scale”—farmers anywhere can participate in carbon finance directly via a web or mobile app, rather than rely on opaque intermediaries.</p>
+    </div>
+  </section>
+
+  <!-- ANIMATED STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="num" data-target="10">0</div>
+      <div class="label">% of annual CO₂ offset potential</div>
+    </div>
+    <div class="stat">
+      <div class="num" data-target="30">0</div>
+      <div class="label">cm depth SOC modeling</div>
+    </div>
+    <div class="stat">
+      <div class="num" data-target="100000">0</div>
+      <div class="label">farmers already trained</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="card">
+      <h2>Technical Approach</h2>
+      <p>TerraVision leverages state‑of‑the‑art geospatial science. Satellite and airborne sensors (optical, multispectral, hyperspectral, and radar) capture reflectance patterns that correlate with soil properties. We train machine‑learning models on ground‑truthed samples to learn how image features map to SOC and nutrients. Key technical steps include:</p>
+      <ul>
+        <li><strong>Data Ingestion</strong> – Automated pipelines pull imagery from ESA Sentinel, NASA Landsat, Planet Labs, and other satellites. Historical archives enable change detection.</li>
+        <li><strong>Preprocessing</strong> – Images are atmospherically corrected and georeferenced. We compute indices (e.g., NDVI, soil‑adjusted metrics) to differentiate vegetation from exposed soil.</li>
+        <li><strong>Machine Learning</strong> – Supervised regression models (Random Forests, CNNs, etc.) integrate spectral bands, indices, DEM/topography, climate, and lab samples to yield per‑pixel SOC estimates down to 30&nbsp;cm depth. Models undergo Bayesian uncertainty analysis and are benchmarked against established carbon‑cycle models to meet verification standards.</li>
+        <li><strong>GIS & Analytics</strong> – Predictions render as interactive maps, aggregated by land parcel. Time‑series tools let users visualize SOC gains or losses annually and flag erosion or nutrient‑deficit zones.</li>
+        <li><strong>Blockchain‑Backed Trust</strong> – Each carbon report is hashed and timestamped on a blockchain ledger to prevent tampering—ensuring full transparency for verifiers.</li>
+        <li><strong>User Interface & APIs</strong> – A modern web portal offers dashboards, map overlays, and automated report downloads. APIs enable third‑party integration with carbon registries and project partners.</li>
+      </ul>
+      <p>This stack makes TerraVision more than a model; it’s an end‑to‑end soil‑intelligence system ready for large‑scale deployment.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Key Benefits & Use Cases</h2>
+      <h3>Empowering Farmers</h3>
+      <p>Smallholders and commercial growers instantly see the carbon value of their fields. TerraVision turns soil health into actionable revenue: growers can track which regenerative practices (cover cropping, no‑till, amendments) improve SOC and claim corresponding carbon credits. This farmer‑first model ensures the majority of credit value flows back to land stewards.</p>
+
+      <h3>Scientific Research</h3>
+      <p>Agronomists and soil scientists gain a global “soil‑lab in the sky.” TerraVision automates sampling design—suggesting optimal locations for new soil cores—and generates publication‑quality reports. Partnerships with experts (e.g., Assoc.&nbsp;Prof.&nbsp;Sambuddha Misra, IISc) guarantee scientific rigor.</p>
+
+      <h3>Environmental Co‑Benefits</h3>
+      <p>Beyond carbon, TerraVision monitors soil moisture and nutrients—optimizing irrigation and fertilizer use, reducing runoff, and cutting emissions. Richer soils hold more water and nutrients, boosting food security while sequestering carbon.</p>
+
+      <h3>Policy & Finance</h3>
+      <p>Data from TerraVision supports land‑use policy, green bonds, and carbon‑finance instruments. Governments, NGOs, and investors gain real‑time evidence of soil health improvements and carbon removal, enabling better risk assessment and project validation.</p>
+
+      <p>In summary, TerraVision replaces tedious manual workflows with automation—analyzing every pixel of farmland in seconds. By lowering the cost of trust in soil carbon markets, it unlocks scale and democratizes climate finance.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Development Status & Partnerships</h2>
+      <p>TerraVision is in an advanced prototype stage. Our web platform and APIs are built and deployed within strategic partners’ environments (not yet public‑facing). We are rigorously field‑testing the tool alongside leading climate‑tech companies, AltCarbon and Boomitra, ensuring real‑world readiness. These partners use similar satellite+AI methods to power global soil‑carbon projects.</p>
+      <p>Our team includes PhD‑level agronomists, GIS engineers, and data scientists. We collaborate closely with Assoc.&nbsp;Prof.&nbsp;Sambuddha Misra (Indian Institute of Science), who guides our soil‑sampling protocols and validation methods. The architecture is designed for rapid scale‑up, ready to plug into larger MRV systems and global deployments.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Impact Potential & Vision</h2>
+      <p>While current partner data remain confidential, industry leaders already report mapping millions of acres and training over 100,000 farmers—quantifying tens of millions of tonnes of CO₂ removed via soil credits. TerraVision is built to operate at that scale: upon public release, it could cover tens of millions of hectares globally, accelerate dozens of carbon projects, and empower thousands of farmers.</p>
+      <p>This platform embodies a paradigm shift: making soil regeneration data‑driven and bankable. By lowering the cost of measurement, TerraVision places farmers at the center of the climate solution and transforms agriculture into a major carbon sink.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Conclusion</h2>
+      <p>TerraVision represents a transformative leap in agritech and climate‑tech. By fusing satellite imagery with AI and rigorous science, it overcomes the toughest barriers in carbon farming: cost, scalability, and credibility. With an advanced prototype tested under leading industry partnerships and academic guidance, TerraVision is poised to revolutionize soil health tracking and carbon markets. We are driven by the conviction that healthy soils are the bedrock of our future—and with TerraVision, soil health tracking becomes instant, precise, and actionable. Farmers grow their carbon balance sheets in real‑time; policymakers and businesses quantify agricultural carbon removal with confidence. TerraVision doesn’t just map the earth—it helps heal it.</p>
+    </div>
+  </section>
+</main>
+
+<!-- SCRIPTS -->
+<script>
+/* --- PARTICLE GLOBE --- */
+const canvas=document.getElementById('globe');
+const ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+addEventListener('resize',resize);resize();
+class Particle{
+  constructor(){
+    this.x=Math.random()*W;
+    this.y=Math.random()*H;
+    this.r=Math.random()*1.5+1;
+    this.d=Math.random()*180;
+  }
+  draw(){
+    ctx.fillStyle='rgba(0,229,255,0.6)';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fill();
+  }
+  update(){
+    this.y-=Math.cos(this.d)*0.3;
+    this.x+=Math.sin(this.d)*0.1;
+    if(this.y<-10)this.y=H+10;
+    if(this.x<0||this.x>W)this.x=Math.random()*W;
+    this.draw();
+  }
+}
+for(let i=0;i<120;i++)particles.push(new Particle());
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p=>p.update());
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* --- COUNTER ANIMATION --- */
+const counters=document.querySelectorAll('.num');
+counters.forEach(c=>{
+  const target=+c.dataset.target;
+  const inc=target/80;
+  let cur=0;
+  const tick=()=>{
+    cur+=inc;
+    if(cur<target){c.textContent=Math.ceil(cur);requestAnimationFrame(tick);}
+    else{c.textContent=target.toLocaleString();}
+  };
+  tick();
+});
+</script>
+</body>
+</html>
